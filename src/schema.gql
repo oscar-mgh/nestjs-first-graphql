@@ -1,0 +1,14 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  """greetings"""
+  firstQuery: String!
+
+  """Get a random number between 0 and 100"""
+  random: Float!
+
+  """Get a random number between min and max parameters"""
+  generateRandom(min: Float!, max: Float!): Float!
+}
