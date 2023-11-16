@@ -2,13 +2,53 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Todo {
+  id: Int!
+  description: String!
+  done: Boolean!
+}
+
+"""Todo quick aggregations"""
+type AggregationsType {
+  total: Int!
+  pending: Int!
+  completed: Int!
+}
+
 type Query {
   """greetings"""
   firstQuery: String!
 
-  """Get a random number between 0 and 100"""
+  """Get a random number between 0 and 10"""
   random: Float!
 
   """Get a random number between min and max parameters"""
-  generateRandom(min: Float!, max: Float!): Float!
+  generateRandom(min: Int!, max: Int!): Float!
+  todos(status: Boolean): [Todo!]!
+  todo(id: Int!): Todo!
+  totalTodos: Int!
+  completedTodos: Int!
+  pendingTodos: Int!
+  aggegations: AggregationsType!
+}
+
+type Mutation {
+  createTodo(createTodoInput: CreateTodoInput!): Todo!
+  updateTodo(updateTodoInput: UpdateTodoInput!): Todo!
+  deleteTodo(id: Int!): Boolean!
+}
+
+input CreateTodoInput {
+  """What needs to be done"""
+  description: String!
+}
+
+input UpdateTodoInput {
+  id: Int!
+
+  """What needs to be done"""
+  description: String
+
+  """Is it done yet?"""
+  done: Boolean
 }
